@@ -21,13 +21,15 @@ In order to accept these words, I modeled the DFA, as follows:
 This automaton operates with the initial state "start" and two states, "s1" and "s2", which are designated as accepted states. Transitions are defined for each state and input symbol combination. This DFA is designed to accept words like "amil", "an", "anarya", "anca", and "and" from the Elvish language, providing a mechanism for efficient language recognition. 
 
 *The presented automaton is equivalent to the following regular expression:*
+
 DFA 1 -> RE 1: 
+
 {^a(mil|n(d|arya|ca)?)$}
 
 ## Implementation
 For my implementation of lexical analysis, I followed the structure defined in the "automatonElven15.pl" file. To use the file, you can input in two ways, with the following format:
 
-dfa("amil").
+*dfa("amil").*
 
 With this, the program should return true if it complies with the rules established in the automaton, and false if the string is not part of the language.
 
@@ -52,9 +54,12 @@ true.
 
 Additionally, you can use the test cases from the "test.pl" file:
 
-Format:
+*Format:*
+
 testStatusNumerodeltest.
-Example:
+
+*Example:*
+
 testAccepted5.
 
 In this case the program should return a message of what is expected, the string and the response provided by the automaton.
@@ -97,11 +102,19 @@ Here's a breakdown of how it works:
 ## Tests
 The "test.pl" file contains all the test cases for the automaton. You just need to follow these steps:
 1. **Download and consult files:**
+
    You must first download both files "automatonElven15.pl" and "test.pl". Then, open your SWI-Prolog application, where you will only consult the "test.pl" file.
-2. **Call the function:** You should call the function of the test case you want to check, and a message will be displayed indicating the expected result, the word in question, and the response provided by the automaton, whether it is true or false.
+   
+2. **Call the function:**
+  
+   You should call the function of the test case you want to check, and a message will be displayed indicating the expected result, the word in question, and the response provided by the automaton, whether it is true or false.
+   
 3. **Use this format:**
+
    testStatusNumerodeltest.
+   
    *Example:*
+   
    testAccepted5.
 
 ## Analysis
