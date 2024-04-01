@@ -16,3 +16,4 @@ The provided automaton is designed to recognize words in the Elvish language. It
 - amil
 
 In order to accept these words, I decided to use a DFA, modeled as follows:
+(automatonImage.jpg)
