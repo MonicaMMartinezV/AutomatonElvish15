@@ -18,7 +18,7 @@ The provided automaton is designed to recognize words in the Elvish language. It
 In order to accept these words, I modeled the DFA, as follows:
 ![Automaton](automatonImage.jpg)
 
-This automaton operates with the initial state "start" and two states, "s1" and "s2", which are designated as accepted states. Transitions are defined for each state and input symbol combination. This DFA is designed to accept words like "amil", "an", "anarya", "anca", and "and" from the Elvish language, providing a mechanism for efficient language recognition. 
+This automaton operates with the initial state "start" and two states, "s1" and "s2", which are designated as accepted states. Transitions are defined for each state and input symbol combination. This DFA is designed to accept words like "amil", "an", "anarya", "anca", and "and" from the Elvish language. 
 
 *The presented automaton is equivalent to the following regular expression:*
 
@@ -27,11 +27,13 @@ DFA 1 -> RE 1:
 {^a(mil|n(d|arya|ca)?)$}
 
 ## Implementation
-For my implementation of lexical analysis, I followed the structure defined in the "automatonElven15.pl" file. To use the file, you can input in two ways, with the following format:
+For my implementation of lexical analysis, I followed the structure defined in the "automatonElven15.pl" file. To use the file, you can input in two ways:
+
+First, with the following format:
 
 *dfa("amil").*
 
-With this, the program should return true if it complies with the rules established in the automaton, and false if the string is not part of the language.
+With this, the program should return *true* if it complies with the rules established in the automaton, and *false* if the string is not part of the language.
 
 Some examples of inputs and outputs are: 
 ```
@@ -52,7 +54,7 @@ true.
 true.
 ```
 
-Additionally, you can use the test cases from the "test.pl" file:
+Second, you can use the test cases from the "test.pl" file:
 
 *Format:*
 
@@ -83,7 +85,7 @@ Must be true: [a,n,c,a]
 true.
 ```
 
-Here's a breakdown of how it works:
+Here's a breakdown of how "automatonElven15.pl" file works:
 
 - **States definition:** The automaton defines multiple states, including a starting state (start) and several intermediary states (s0 to s8).
 
@@ -103,11 +105,16 @@ Here's a breakdown of how it works:
 The "test.pl" file contains all the test cases for the automaton. You just need to follow these steps:
 1. **Download and consult files:**
 
-   You must first download both files "automatonElven15.pl" and "test.pl". Then, open your SWI-Prolog application, where you will only consult the "test.pl" file.
+   You must download both files "automatonElven15.pl" and "test.pl". Then, open your SWI-Prolog application, where you will only consult the "test.pl" file.
    
 2. **Call the function:**
   
-   You should call the function of the test case you want to check, and a message will be displayed indicating the expected result, the word in question, and the response provided by the automaton, whether it is true or false.
+   You should call the function of the test case you want to check, and a message will be displayed indicating the expected result, the word in question, and the response provided by the automaton, whether it is *true* or *false*.
+   ```
+   ?- testRejected7.
+   Must be false: [a,n,n,a]
+   false.
+   ```
    
 3. **Use this format:**
 
@@ -118,7 +125,7 @@ The "test.pl" file contains all the test cases for the automaton. You just need 
    testAccepted5.
 
 ## Analysis
-The complexity of this code primarily depends on the length of the input string and the number of transitions required to process it. Since Prolog operates on a non-deterministic basis and explores all possible paths, the complexity can be high for larger input strings or automata with many states and transitions. 
+The complexity of this code primarily depends on the length of the input string and the number of transitions required to process it. Since Prolog operates on a non-deterministic and deterministic basis, and explores all possible paths, the complexity can be high for larger input strings or automata with many states and transitions. 
 
 However, the complexity can be bounded by the size of the automaton and the length of the input string. The overall complexity of this is $O(n)$, where n is the length of the input string, because the program processes the input character by character, transitioning between states. This is equivalent to the next code:
 
@@ -127,7 +134,7 @@ for element in list:  # Through the list
     print(element)
 ```
 
-My first approach to the solution was to use an automaton in Prolog, which is also a natural solution. Initially, I constructed a DFA model with a total of 4 acceptance states, which, although maintaining complexity at $O(n)$, is suboptimal as it resulted in too many acceptance states. Upon redesigning and approaching the problem from a different perspective, I made a second approach to the problem, which only had 2 acceptance states. I choosed the second DFA design because it reduced the DFA code. Additionally, another approach I took to the problem was to create an equivalent regular expression, which seemed like a valid option considering the $O(n)$ complexity of the automaton. However; based on the article of geeksforgeeks (GfG, 2023), unlike regular expressions, the DFA provides clear and specific rules for accepting or rejecting specific input strings, with each state and transition representing precise lexical patterns. In contrast, logical expressions may be harder to comprehend and maintain, especially for complex strings or languages with ambiguous rules. Additionally, the DFA offers efficient string verification through step-by-step analysis with deterministic transitions, ensuring fast and predictable processing, crucial for high-performance applications like large-scale text analysis.
+My first approach to the solution was to use an automaton in Prolog, which is also a natural solution. Initially, I constructed a DFA model with a total of 4 acceptance states, which, although maintaining complexity at $O(n)$, is suboptimal as it resulted in too many acceptance states. Upon redesigning and approaching the problem from a different perspective, I made a second approach to the problem, which only had 2 acceptance states. I choosed the second DFA design because it reduced the DFA code. Additionally, another approach I took to the problem was to create an equivalent regular expression and a automaton in python, which seemed like a valid option considering the $O(n)$ complexity of the automaton in prolog. However; based on the article of geeksforgeeks (GfG, 2023), unlike regular expressions, the DFA provides clear and specific rules for accepting or rejecting specific input strings, with each state and transition representing precise lexical patterns. In contrast, logical expressions may be harder to comprehend and maintain, especially for complex strings or languages with ambiguous rules. Additionally, the DFA offers efficient string verification through step-by-step analysis with deterministic transitions, ensuring fast and predictable processing, crucial for high-performance applications like large-scale text analysis.
 
 ## References
 - FasterCapital (2021). NFA vs DFA desentranar las diferencias en los modelos de automata finitos. (https://fastercapital.com/es/contenido/NFA-vs--DFA--desentranar-las-diferencias-en-los-modelos-de-automata-finitos.html)
