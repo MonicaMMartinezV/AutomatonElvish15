@@ -21,7 +21,7 @@ Mathematically (GeeksforGeeks, 2023), a DFA can be represented as a 5-tuple \((Q
 - \(Q\) is the finite set of states.
 - \(\Sigma\) is the finite set of input symbols (alphabet).
 - \(\delta: Q \times \Sigma \rightarrow Q\) is the transition function.
-- \(s_0 \in Q\) is the initial state.
+- \(q_0 \in Q\) is the initial state.
 - \(F \subseteq Q\) is the set of accepting states.
 
 Another method that I implemented was a regular expression. A regular expression (MDN, 2024) is a pattern used to match character combinations in strings. In JavaScript, regular expressions are also objects. Regular expressions are used in various fields of computer science to describe the lexemes of programming languages, search text, validate input data, etc.
